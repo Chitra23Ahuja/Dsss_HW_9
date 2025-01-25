@@ -2,7 +2,7 @@ from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, ContextTypes
 from telegram.ext.filters import TEXT
 
-API_TOKEN = '7883826141:AAEjio-U-_9P7et_Dg8FJpYaWynPdyUzeYs'
+API_TOKEN = 'Enter your API token here'
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     await update.message.reply_text("Hello! I am your simple AI Assistant. How can I help you today?")
