@@ -9,7 +9,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 
 async def process(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     user_message = update.message.text
-    response = "I received your message: \"{}\". How can I assist further?".format(user_message)
+    response = "Received your message: \"{}\"".format(user_message)
     await update.message.reply_text(response)
 
 def main():

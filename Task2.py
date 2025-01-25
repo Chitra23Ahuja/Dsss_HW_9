@@ -17,7 +17,7 @@ def generate_pirate_response(user_message: str) -> str:
         {"role": "user", "content": user_message},
     ]
     prompt = pipe.tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
-    outputs = pipe(prompt, max_new_tokens=256, do_sample=True, temperature=0.7, top_k=50, top_p=0.95)
+    outputs = pipe(prompt, max_new_tokens=200, do_sample=True, temperature=0.7, top_k=50, top_p=0.95)
     generated_text = outputs[0]["generated_text"]
     print(generated_text)
     # Remove the system/user tokens and <|assistant|> for clean output
@@ -30,7 +30,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 async def process(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     user_message = update.message.text
     try:
-        static_message = "I received your message: \"{}\". How can I assist further?".format(user_message)
+        static_message = "Received your message: \"{}\"".format(user_message)
         await update.message.reply_text(static_message)
         
         pirate_response = generate_pirate_response(user_message)
