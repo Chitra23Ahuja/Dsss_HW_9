@@ -1,3 +1,4 @@
+
 import torch
 from transformers import pipeline
 from telegram import Update
@@ -29,6 +30,9 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 async def process(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     user_message = update.message.text
     try:
+        static_message = "I received your message: \"{}\". How can I assist further?".format(user_message)
+        await update.message.reply_text(static_message)
+        
         pirate_response = generate_pirate_response(user_message)
         await update.message.reply_text(pirate_response)
     except Exception as e:
